@@ -6,7 +6,7 @@ import {types} from '../types';
 import {errors} from '../errors';
 import { removeError, setError } from './ui';
 
-const login = (uid, displayName) => ({
+export const login = (uid, displayName) => ({
     type : types.login,
     payload : {
         uid,
@@ -67,4 +67,19 @@ export const startLoading = () => ({
 
 export const finishLoading = () => ({
     type : types.uiFinishLoading
+})
+
+
+export const startLogout = () => {
+    return (dispatch) => {
+        signOut(getAuth())
+            .then( () => {
+                dispatch(logout)
+            })
+            .catch(error => console.log(error))
+    }
+}
+
+export const logout = () => ({
+    type : types.logout
 })

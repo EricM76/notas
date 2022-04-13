@@ -1,5 +1,3 @@
-import { type } from "@testing-library/user-event/dist/type";
-import { act } from "react-dom/test-utils";
 import { types } from "../types";
 
 const initialState = {
@@ -11,7 +9,6 @@ export const notesReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case types.noteActive:
-
             return {
                 ...state,
                 active: {
